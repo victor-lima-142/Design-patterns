@@ -29,8 +29,7 @@ Os Design Patterns podem ser categorizados em três grupos principais:
 - [Singleton](https://github.com/victor-lima-142/Design-patterns/tree/main/Creational/Singleton)
 - Builder
 - Prototype
-- 
-- 
+
 - ### Padrões Estruturais
 - Adapter
 - Bridge
@@ -38,7 +37,7 @@ Os Design Patterns podem ser categorizados em três grupos principais:
 - Decorator
 - Facade
 - Proxy
-- 
+
 - ### Padrões Comportamentais
 - Chain of Responsibility
 - Command
@@ -48,6 +47,61 @@ Os Design Patterns podem ser categorizados em três grupos principais:
 - Memento
 - Observer
 - State
+- Strategy
+- Template Method
+- Visitor
+
+---
+
+# Design Patterns
+
+## Introduction
+This repository is a collection of Design Patterns examples in different programming languages. Design Patterns are reusable solutions to common problems that arise during software development. They represent best practices used by developers over time.
+
+## What are Design Patterns?
+Design Patterns are solutions to recurring problems in software development. They are not ready-made codes or libraries that can be plugged into your application directly, but rather guidelines on how to deal with certain problems. They provide a framework for solving common software design problems and are useful for achieving more flexible, reusable, and maintainable code.
+
+## Why are they important?
+- **Code reuse**: Design Patterns promote the reuse of successful solutions to common problems.
+- **Code Clarity and Comprehension***: They help make the code clearer and easier to understand, as they follow naming and structuring conventions.
+- **Flexibility**: Design Patterns make the code more flexible for future changes and expansions.
+- **Maintainability**: Makes code easier to maintain by following solid design principles.
+
+## Design Patterns Categories
+Design Patterns can be categorized into three main groups:
+
+- **Creation Patterns**: These patterns provide ways to create objects while hiding the creation process, making the system independent of the way objects are created, composed and represented.
+
+- **Structural Patterns**: These patterns deal with the composition of classes or objects. They help ensure that when one part of the system changes, the entire system does not need to be restructured.
+
+- **Behavioral Patterns**: These patterns are concerned with the interaction between objects, how they communicate, how they interact and how responsibility is distributed between them.
+
+## Examples of Design Patterns
+
+### Breeding Patterns
+- [Factory Method](https://github.com/victor-lima-142/Design-patterns/tree/main/Creational/Factory%20Method)
+- Abstract Factory
+- [Singleton](https://github.com/victor-lima-142/Design-patterns/tree/main/Creational/Singleton)
+- Builder
+- prototype
+
+- ### Structural Standards
+- Adapter
+-Bridge
+- Composite
+- Decorator
+- Facade
+- Proxy
+
+- ### Behavioral Patterns
+- Chain of Responsibility
+-Command
+- Interpreter
+- Iterator
+- Mediator
+- Memento
+- Observer
+- Status
 - Strategy
 - Template Method
 - Visitor
