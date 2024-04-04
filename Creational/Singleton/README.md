@@ -27,7 +27,7 @@ Na construção de uma API, precisamos ter apenas uma instância global de conex
 
 # Singleton pattern
 
-## Intention
+## Intent
 Ensure that a class has only one instance and provide a global access point for it.
 
 ## Motivation
