@@ -30,7 +30,7 @@ Os Design Patterns podem ser categorizados em três grupos principais:
 - Builder
 - Prototype
 
-- ### Padrões Estruturais
+### Padrões Estruturais
 - Adapter
 - Bridge
 - [Composite]((https://github.com/victor-lima-142/Design-patterns/tree/main/Structural/Composite))
@@ -38,7 +38,7 @@ Os Design Patterns podem ser categorizados em três grupos principais:
 - Facade
 - Proxy
 
-- ### Padrões Comportamentais
+### Padrões Comportamentais
 - Chain of Responsibility
 - Command
 - Interpreter
@@ -72,7 +72,7 @@ Design Patterns are solutions to recurring problems in software development. The
 ## Design Patterns Categories
 Design Patterns can be categorized into three main groups:
 
-- **Creation Patterns**: These patterns provide ways to create objects while hiding the creation process, making the system independent of the way objects are created, composed and represented.
+- **Creational Patterns**: These patterns provide ways to create objects while hiding the creation process, making the system independent of the way objects are created, composed and represented.
 
 - **Structural Patterns**: These patterns deal with the composition of classes or objects. They help ensure that when one part of the system changes, the entire system does not need to be restructured.
 
@@ -80,14 +80,14 @@ Design Patterns can be categorized into three main groups:
 
 ## Examples of Design Patterns
 
-### Breeding Patterns
+### Creational Patterns
 - [Factory Method](https://github.com/victor-lima-142/Design-patterns/tree/main/Creational/Factory%20Method)
 - Abstract Factory
 - [Singleton](https://github.com/victor-lima-142/Design-patterns/tree/main/Creational/Singleton)
 - Builder
 - prototype
 
-- ### Structural Standards
+### Structural Standards
 - Adapter
 - Bridge
 - [Composite]((https://github.com/victor-lima-142/Design-patterns/tree/main/Structural/Composite))
@@ -95,7 +95,7 @@ Design Patterns can be categorized into three main groups:
 - Facade
 - Proxy
 
-- ### Behavioral Patterns
+### Behavioral Patterns
 - Chain of Responsibility
 - Command
 - Interpreter
