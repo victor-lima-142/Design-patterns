@@ -33,7 +33,7 @@ Os Design Patterns podem ser categorizados em três grupos principais:
 ### Padrões Estruturais
 - Adapter
 - Bridge
-- [Composite]((https://github.com/victor-lima-142/Design-patterns/tree/main/Structural/Composite))
+- [Composite](https://github.com/victor-lima-142/Design-patterns/tree/main/Structural/Composite)
 - Decorator
 - Facade
 - Proxy
@@ -90,7 +90,7 @@ Design Patterns can be categorized into three main groups:
 ### Structural Standards
 - Adapter
 - Bridge
-- [Composite]((https://github.com/victor-lima-142/Design-patterns/tree/main/Structural/Composite))
+- [Composite](https://github.com/victor-lima-142/Design-patterns/tree/main/Structural/Composite)
 - Decorator
 - Facade
 - Proxy
