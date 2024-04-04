@@ -20,7 +20,9 @@ Existem vários padrões de projeto criacionais, cada um com seu propósito espe
 
 Cada um desses padrões tem seus próprios casos de uso e benefícios, e a escolha do padrão adequado depende do contexto específico do problema que você está tentando resolver. Ao aplicar padrões de projeto criacionais, os desenvolvedores podem criar sistemas mais flexíveis, escaláveis e fáceis de manter.
 
+<br> 
 ---
+<br> 
 
 # Creational Design Patterns
 

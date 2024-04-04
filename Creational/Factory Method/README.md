@@ -34,7 +34,9 @@ O padrão Factory Method é usado quando você tem uma hierarquia de classes e d
 
 - **Overhead de criação de classes adicionais**: Introduzir o Factory Method pode aumentar o número de classes no código, o que pode resultar em um overhead de criação de classes adicionais. Isso pode tornar o código mais difícil de gerenciar e manter, especialmente em projetos pequenos ou simples.
 
+<br> 
 ---
+<br> 
 
 # Factory Method Pattern
 

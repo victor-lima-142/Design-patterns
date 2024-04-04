@@ -23,7 +23,9 @@ Alguns dos padrões de projeto estruturais mais comuns incluem:
 
 > Esses padrões, quando aplicados corretamente, podem melhorar significativamente a estrutura e a flexibilidade do seu código, facilitando a manutenção e a evolução do sistema ao longo do tempo. No entanto, é importante entender as situações em que cada padrão é mais apropriado e como aplicá-los de forma eficaz para obter os melhores resultados.
 
+<br> 
 ---
+<br> 
 
 # Structural Design Patterns
 

@@ -51,7 +51,9 @@ Os Design Patterns podem ser categorizados em três grupos principais:
 - Template Method
 - Visitor
 
+<br> 
 ---
+<br> 
 
 # Design Patterns
 

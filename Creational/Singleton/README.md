@@ -23,7 +23,9 @@ Na construção de uma API, precisamos ter apenas uma instância global de conex
 - **Requer tratamento especial em casos de concorrência**
 - **Viola o Princípior da Responsabilidade única**
 
+<br> 
 ---
+<br> 
 
 # Singleton pattern
 
