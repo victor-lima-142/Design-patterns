@@ -40,7 +40,7 @@ Some of the most common structural design patterns include:
 
 - **Bridge**: The Bridge pattern decouples an abstraction from its implementation, allowing both to vary independently. This is useful when you have different implementations that need to be combined with different abstractions.
 
-- **Composite**: This pattern allows you to treat individual objects and compositions of objects uniformly. It is useful when you need to represent hierarchies of objects in a tree structure.
+- [**Composite**](https://github.com/victor-lima-142/Design-patterns/tree/main/Structural/Composite): This pattern allows you to treat individual objects and compositions of objects uniformly. It is useful when you need to represent hierarchies of objects in a tree structure.
 
 - **Decorator**: The Decorator allows adding additional behaviors to objects dynamically. This is done by wrapping the original object in one or more decorators that provide additional functionality.
 

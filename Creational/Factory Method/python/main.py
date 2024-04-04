@@ -15,7 +15,6 @@ class Mousepad(Product):
         return "Mousepad"
 
 # Defining Creators (Factories)
-
 class ProductFactory(ABC):
     @abstractmethod
     def factoryMethod(self):
