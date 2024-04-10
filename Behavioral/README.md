@@ -7,6 +7,8 @@ Os  aplicam herança para distribuir o comportamento enre classes.
 ## Tipos
 Existem vários tipos de padrões comportamentais, cada um com seu próprio conjunto de desafios e cenários de aplicação. Entre os padrões mais comuns estão:
 
+- [**Template Method**](https://github.com/victor-lima-142/Design-patterns/tree/main/Behavioral/Template%20Method): Este padrão define o esqueleto de um algoritmo em uma classe base, delegando alguns passos específicos para as subclasses. Ele permite que as subclasses redefinam certos passos de um algoritmo sem alterar sua estrutura geral.
+
 - **Chain of Responsibility (Corrente de Responsabilidade)**: Este padrão permite que uma solicitação seja passada por uma cadeia de objetos, onde cada objeto decide se processa a solicitação ou a passa adiante para o próximo na cadeia. Isso promove baixo acoplamento entre os objetos e flexibilidade na maneira como as solicitações são tratadas.
 
 - **Command (Comando)**: O padrão Command encapsula uma solicitação como um objeto, permitindo que você parametrize clientes com operações, enfileire solicitações, registre operações em log e desfaça ações. Isso separa o invocador do processamento da solicitação, proporcionando maior flexibilidade e extensibilidade.
@@ -35,6 +37,8 @@ Behavioral Patterns concern algorithms and the assignment of responsibilities am
 
 ## Types
 There are several types of behavioral patterns, each with its own set of challenges and application scenarios. Among the most common patterns are:
+
+- [**Template Method**](https://github.com/victor-lima-142/Design-patterns/tree/main/Behavioral/Template%20Method): This pattern defines the skeleton of an algorithm in a base class, delegating some specific steps to subclasses. It allows subclasses to redefine certain steps of an algorithm without changing its overall structure.
 
 - **Chain of Responsibility**: This pattern allows a request to be passed through a chain of objects, where each object decides whether to process the request or pass it on to the next in the chain. This promotes low coupling between objects and flexibility in how requests are handled.
 
