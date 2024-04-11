@@ -31,6 +31,10 @@ O padrão Template Method pode ser usado:
 
 - **Potencial para violação do princípio de substituição de Liskov**: Se as subclasses modificarem o comportamento do Template Method de uma maneira que viole o contrato definido pela classe base, isso pode levar a problemas de design e a uma violação do princípio de substituição de Liskov.
 
+> Esse padrão trabalha com os seguintes termos:
+> - Classe abstrata: Ela declara uma interface para definir os passos do algoritmo.
+> - Classe concreta: Também chamada de subclasse, ela define os passos específicos da subclasse.
+> - Método template: Define a ordem chamando os métodos dos passos definidos na Classe Abstrata e sobescritos na Classes Concretas (subclasses ou classes-filhas) 
 
 <br> 
 ---
@@ -71,3 +75,8 @@ The Template Method pattern can be used:
 -   **Difficulty in Understanding Control Flow**: In some situations, it may be difficult for developers to understand the control flow of the algorithm since parts of it are distributed between the base class and its subclasses.
     
 -   **Potential for Violation of the Liskov Substitution Principle**: If subclasses modify the behavior of the Template Method in a way that violates the contract defined by the base class, this can lead to design problems and a violation of the Liskov Substitution Principle.
+
+> This pattern works with the following terms:
+> - Abstract class: It declares an interface to define the algorithm steps.
+> - Concrete class: Also called a subclass, it defines the specific steps of the subclass.
+> - Template method: Defines the order by calling the methods of the steps defined in the Abstract Class and overridden in the Concrete Classes (subclasses or child classes).
