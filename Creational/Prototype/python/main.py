@@ -1,13 +1,13 @@
-from abc import ABC, abstract method;
+from abc import ABC, abstract_method;
 from typing import List
 
 class AbstractModel(ABC):
-    @abstract method
+    @abstract_method
     def to_string(self):
         pass
 
 class Prototype(AbstractModel):
-    @abstract method
+    @abstract_method
     def clone(self):
         pass
 

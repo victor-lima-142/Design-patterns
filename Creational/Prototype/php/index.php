@@ -79,40 +79,10 @@ $deepUser = new DeepUser('John Doe', 30, [$address1]);
 $deepUserClone = $deepUser->clone();
 $deepUserClone->addresses[0]->street = '456 Elm St';
 
+echo $shallowUser->getData();
+echo $shallowUserClone->getData();
+
+echo $deepUser->getData();
+echo $deepUserClone->getData();
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <main>
-        <section>
-            <h1>Shallow copy</h1>
-            <h2>Base user</h2>
-            <ul>
-                <li><?php echo $shallowUser->getData(); ?></li>
-            </ul>
-
-            <h2>Copy user</h2>
-            <ul>
-                <li><?php echo $shallowUserClone->getData(); ?></li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Deep user</h2>
-            <ul>
-                <li><?php echo $deepUser->getData(); ?></li>
-            </ul>
-
-            <h2>Copy user</h2>
-            <ul>
-                <li><?php echo $deepUserClone->getData(); ?></li>
-            </ul>
-        </section>
-    </main>
-</body>
-</html>

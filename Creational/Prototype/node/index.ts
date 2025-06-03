@@ -55,42 +55,23 @@ export class DeepUser extends User implements Prototype {
 }
 
 
+const address1 = new Address('123 Main St', 'Anytown');
+const address2 = new Address('456 Maple Ave', 'Othertown');
+const addresses = [address1].concat(address2)
+
+const johnDeep = new DeepUser('John', 30, addresses)
+console.log(johnDeep.toJSON())
+
+const joeDeep = johnDeep.clone();
+joeDeep.name = 'Joe';
+joeDeep.addresses[0].street = '789 Elm St'
+console.log(joeDeep.toJSON())
 
 
-// Bootstrap
-const bootstrap = {
-    runDeepCopy() {
-        const address1 = new Address('123 Main St', 'Anytown');
-        const address2 = new Address('456 Maple Ave', 'Othertown');
-        const addresses = [address1].concat(address2)
+const johnShallow = new User('John', 30)
+console.log(johnShallow.toJSON())
 
-        const john = new DeepUser('John', 30, addresses)
-        console.log(john.toJSON())
-
-        const joe = john.clone();
-        joe.name = 'Joe';
-        joe.addresses[0].street = '789 Elm St'
-        console.log(joe.toJSON())
-    },
-
-
-    runShallowCopy() {
-        const john = new User('John', 30)
-        console.log(john.toJSON())
-
-        const joe = john.clone();
-        joe.name = 'Joe';
-        joe.age = 40;
-        console.log(joe.toJSON())
-    },
-
-    start() {
-        console.log("Shallow Copy\n");
-        this.runShallowCopy();
-        console.log("\n\n-------------------------------------------------------------\n\n");
-        console.log("Deep Copy\n");
-        this.runDeepCopy();
-    }
-}
-
-bootstrap.start();
+const joeShallow = johnShallow.clone();
+joeShallow.name = 'Joe';
+joeShallow.age = 40;
+console.log(joeShallow.toJSON())
