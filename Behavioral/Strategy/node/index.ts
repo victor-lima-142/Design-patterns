@@ -4,14 +4,34 @@ interface PaymentStrategy {
 }
 
 // Context
-class PaymentProcessor {
-    constructor(private _strategy: PaymentStrategy) { }
+class ShoppingCart {
+    private _amount: number;
 
-    set paymentMethod(strategy: PaymentStrategy) {
-        this._strategy = strategy;
+    constructor(private _paymentStrategy: PaymentStrategy) {
+        this._amount = 0
     }
 
-    process(amount: number) { this._strategy.pay(amount); }
+    get paymentStrategy() { return this._paymentStrategy }
+
+    get amount() { return this._amount }
+
+    setPaymentStrategy(paymentStrategy: PaymentStrategy) {
+        this._paymentStrategy = paymentStrategy;
+    }
+
+    processPayment() {
+        this._paymentStrategy.pay(this._amount);
+    }
+
+    add(value: number) { this._amount += value }
+
+    remove(value: number) {
+        const currentAmount = this._amount;
+        if (currentAmount - value < 0) console.log("Cannot remove more than the current amount.");
+        else this._amount -= value
+    }
+
+    reset() { this._amount = 0 }
 }
 
 // Concrete Strategies
@@ -33,54 +53,20 @@ class CashPaymentStrategy implements PaymentStrategy {
     }
 }
 
-// Auxiliar classes
-class User {
-    constructor(private _name: string, private _email: string, private _paymentMethod: PaymentStrategy) { }
-
-    set name(name: string) { this._name = name }
-
-    get name(): string { return this._name }
-
-    set email(email: string) { this._email = email }
-
-    get email() { return this._email }
-
-    get paymentMethod() { return this._paymentMethod }
-
-    set paymentMethod(paymentMethod: PaymentStrategy) { this._paymentMethod = paymentMethod; }
-
-    get paymentProcessor(): PaymentProcessor {
-        return new PaymentProcessor(this.paymentMethod);
-    }
-}
-
-class Order {
-    constructor(private _user: User, private _amount: number) { }
-
-    processPayment() {
-        this._user.paymentProcessor.process(this._amount);
-    }
-
-    get user() { return this._user }
-
-    get amount() { return this._amount }
-
-    set amount(amount: number) { this._amount = amount }
-}
-
 // Example usage
 const cardMethod: PaymentStrategy = new CardPaymentStrategy();
 const paypalMethod: PaymentStrategy = new PaypalPaymentStrategy();
 const cashMethod: PaymentStrategy = new CashPaymentStrategy();
 
-const user = new User("John", "john.doe@mail.com.br", cardMethod);
-const order = new Order(user, 100);
-order.processPayment();
+const cart = new ShoppingCart(cardMethod);
+cart.add(100);
+cart.processPayment();
 
-user.paymentMethod = paypalMethod;
-order.amount = 200;
-order.processPayment();
+cart.remove(50);
+cart.setPaymentStrategy(paypalMethod);
+cart.processPayment();
 
-user.paymentMethod = cashMethod;
-order.amount = 300;
-order.processPayment();
+cart.reset();
+cart.add(190);
+cart.setPaymentStrategy(cashMethod);
+cart.processPayment();

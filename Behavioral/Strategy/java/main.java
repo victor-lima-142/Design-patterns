@@ -1,24 +1,40 @@
-import java.util.Optional;
-
 // Strategy
 interface PaymentStrategy {
     void pay(Float amount);
 }
 
 // Context
-class PaymentProcessor {
-    private PaymentStrategy paymentMethod;
+class ShoppingCart {
+    private PaymentStrategy paymentStrategy;
+    private Float amount;
 
-    PaymentProcessor(PaymentStrategy paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    ShoppingCart(PaymentStrategy paymentStrategy) {
+        this.paymentStrategy = paymentStrategy;
+        this.amount = 0f;
     }
 
-    public void setPaymentStrategy(PaymentStrategy paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
+        this.paymentStrategy = paymentStrategy;
     }
 
-    public void processPayment(Float amount) {
-        paymentMethod.pay(amount);
+    public void processPayment() {
+        this.paymentStrategy.pay(this.amount);
+    }
+
+    public void add(Float value) {
+        this.amount += value;
+    }
+
+    public void remove(Float value) {
+        Float currentAmount = this.amount;
+        if (currentAmount - value < 0f) {
+            throw new IllegalArgumentException("Cannot remove more than the current amount.");
+        }
+        this.amount -= value;
+    }
+
+    public void reset() {
+        this.amount = 0f;
     }
 }
 
@@ -44,82 +60,25 @@ class CashPaymentStrategy implements PaymentStrategy {
     }
 }
 
-// Auxiliar classes
-class User {
-    private String name;
-    private String email;
-    private PaymentStrategy paymentMethod;
-    
-    User(String name, String email, Optional<PaymentStrategy> paymentMethod) {
-        this.name = name;
-        this.email = email;
-        PaymentStrategy usedPaymentStrategy = paymentMethod.orElse(new CashPaymentStrategy());
-        this.paymentMethod = usedPaymentStrategy;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    public PaymentStrategy getPaymentStrategy() {
-        return this.paymentMethod;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPaymentStrategy(PaymentStrategy paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public PaymentProcessor getPaymentProcessor() {
-        return new PaymentProcessor(this.paymentMethod);
-    }
-}
-
-class Order {
-    private User user;
-    private Float amount;
-
-    Order(User user, Float amount) {
-        this.user = user;
-        this.amount = amount;
-    }
-
-    public void processOrder() {
-        this.user.getPaymentProcessor().processPayment(amount);
-    }
-
-    public void setAmount(Float amount) {
-        this.amount = amount;
-    }
-}
-
 // Example usage
 class Main {
     public static void main(String[] args) {
-        PaymentStrategy cardPaymentStrategy = new CardPaymentStrategy();
-        PaymentStrategy paypalPaymentStrategy = new PaypalPaymentStrategy();
+        PaymentStrategy cardMethod = new CardPaymentStrategy();
+        PaymentStrategy paypalMethod = new PaypalPaymentStrategy();
+        PaymentStrategy cashMethod = new CashPaymentStrategy();
+    
+        ShoppingCart cart = new ShoppingCart(cardMethod);
+        cart.add(100f);
+        cart.processPayment();
         
-        User user = new User("John Doe", "john.doe@mail.com", Optional.empty());
-        Order order = new Order(user, 100f);
-        order.processOrder();
-        
-        user.setPaymentStrategy(cardPaymentStrategy);
-        order.setAmount(200f);
-        order.processOrder();
 
-        order.setAmount(300f);
-        user.setPaymentStrategy(paypalPaymentStrategy);
-        order.processOrder();
+        cart.remove(50f);
+        cart.setPaymentStrategy(paypalMethod);
+        cart.processPayment();
+
+        cart.reset();
+        cart.add(190f);
+        cart.setPaymentStrategy(cashMethod);
+        cart.processPayment();
     }
 }
