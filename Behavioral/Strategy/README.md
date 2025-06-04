@@ -85,6 +85,7 @@ The Strategy pattern can be used:
 - **Contextual Coupling**: If a strategy requires access to context-specific data, it might lead to undesirable coupling or require passing many parameters, reducing cohesion.
 
 - **Overhead in Simple Cases**: In scenarios where behavior variation is minimal or absent, using the pattern may be excessive.
+
 ---
 > This pattern works with the following terms:
 >
