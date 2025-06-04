@@ -19,11 +19,11 @@ Design Patterns são soluções para problemas recorrentes no desenvolvimento de
 
 Os Design Patterns podem ser categorizados em três grupos principais:
 
-- **Padrões de Criação**: Estes padrões fornecem maneiras de criar objetos enquanto ocultam o processo de criação, tornando o sistema independente da forma como os objetos são criados, compostos e representados.
+- [**Padrões de Criação**](https://github.com/victor-lima-142/Design-patterns/tree/main/Creational): Estes padrões fornecem maneiras de criar objetos enquanto ocultam o processo de criação, tornando o sistema independente da forma como os objetos são criados, compostos e representados.
 
-- **Padrões Estruturais**: Estes padrões lidam com a composição de classes ou objetos. Eles ajudam a garantir que, quando uma parte do sistema muda, todo o sistema não precisa ser reestruturado.
+- [**Padrões Estruturais**](https://github.com/victor-lima-142/Design-patterns/tree/main/Structural): Estes padrões lidam com a composição de classes ou objetos. Eles ajudam a garantir que, quando uma parte do sistema muda, todo o sistema não precisa ser reestruturado.
 
-- **Padrões Comportamentais**: Estes padrões estão preocupados com a interação entre os objetos, como eles se comunicam, como eles interagem e como a responsabilidade é distribuída entre eles.
+- [**Padrões Comportamentais**](https://github.com/victor-lima-142/Design-patterns/tree/main/Behavioral): Estes padrões estão preocupados com a interação entre os objetos, como eles se comunicam, como eles interagem e como a responsabilidade é distribuída entre eles.
 
 ## Exemplos de Design Patterns
 
@@ -54,8 +54,8 @@ Os Design Patterns podem ser categorizados em três grupos principais:
 - Memento
 - Observer
 - State
-- Strategy
-- Template Method
+- [Strategy](https://github.com/victor-lima-142/Design-patterns/tree/main/Behavioral/Strategy)
+- [Template Method](https://github.com/victor-lima-142/Design-patterns/tree/main/Behavioral/Template%20Method)
 - Visitor
 
 ---
@@ -79,11 +79,11 @@ Design Patterns are solutions to recurring problems in software development. The
 
 Design Patterns can be categorized into three main groups:
 
-- **Creational Patterns**: These patterns provide ways to create objects while hiding the creation process, making the system independent of the way objects are created, composed and represented.
+- [**Creational Patterns**](https://github.com/victor-lima-142/Design-patterns/tree/main/Creational): These patterns provide ways to create objects while hiding the creation process, making the system independent of the way objects are created, composed and represented.
 
-- **Structural Patterns**: These patterns deal with the composition of classes or objects. They help ensure that when one part of the system changes, the entire system does not need to be restructured.
+- [**Structural Patterns**](https://github.com/victor-lima-142/Design-patterns/tree/main/Structural): These patterns deal with the composition of classes or objects. They help ensure that when one part of the system changes, the entire system does not need to be restructured.
 
-- **Behavioral Patterns**: These patterns are concerned with the interaction between objects, how they communicate, how they interact and how responsibility is distributed between them.
+- [**Behavioral Patterns**](https://github.com/victor-lima-142/Design-patterns/tree/main/Behavioral): These patterns are concerned with the interaction between objects, how they communicate, how they interact and how responsibility is distributed between them.
 
 ## Examples of Design Patterns
 
