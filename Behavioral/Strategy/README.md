@@ -1,4 +1,4 @@
-# Padrão Strategy
+# Padrão Strategy / Strategy Pattern
 
 ## Intenção
 
@@ -47,8 +47,6 @@ O padrão Strategy pode ser usado:
 > - **ConcreteStrategy**: Implementações concretas que encapsulam o algoritmo específico.
 
 ---
-
-# Strategy Pattern
 
 ## Intention
 

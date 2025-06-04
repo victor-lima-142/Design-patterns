@@ -1,17 +1,21 @@
-# Padrão Factory Method
+# Padrão Factory Method / Factory Method Pattern
 
 ## Intenção
+
 Definir uma interface para criar um objeto (daí o nome "método de fábrica"), mas deixar as subclasses decidirem que classe instanciar. Podemos assim adiar a instanciação para subclasses.
 
 ## Motivação
+
 O padrão Factory Method é usado quando você tem uma hierarquia de classes e deseja delegar a responsabilidade de criação de objetos para subclasses específicas.
 
 ## Aplicabilidade
+
 - Uma classe não pode antecipar a classe de objetos que devem criar.
 - Uma classe quer que suas subclasses especifiquem os objetos que criam.
 - Classes delegam responsabilidade para uma dentre várias subclasses auxiliares, e você quer localizar o conhecimento de qual subclasse auxiliar que é a delegada.
 
 ## Prós
+
 - **Desacoplamento**: O Factory Method promove um baixo acoplamento entre o código cliente e as classes concretas, já que o cliente interage apenas com a interface comum (ou classe abstrata) em vez de conhecer as implementações específicas de fábrica e produto.
 
 - **Abstração**: Ele fornece uma abstração para a criação de objetos, permitindo que o código cliente trabalhe com uma interface ou classe abstrata, em vez de se preocupar com as implementações concretas de fábrica e produto. Isso facilita a substituição de objetos concretos sem alterar o código cliente.
@@ -22,7 +26,7 @@ O padrão Factory Method é usado quando você tem uma hierarquia de classes e d
 
 - **Padronização**: O Factory Method promove a padronização da criação de objetos, garantindo que todos os objetos sejam criados de acordo com um padrão específico definido pela fábrica. Isso ajuda a manter a consistência e a coesão no código.
 
-## Contras:
+## Contras
 
 - **Complexidade adicional**: Introduzir o padrão Factory Method pode adicionar complexidade ao código, especialmente se houver muitas classes envolvidas na hierarquia de fábrica e produto. Isso pode tornar o código mais difícil de entender e manter.
 
@@ -34,24 +38,24 @@ O padrão Factory Method é usado quando você tem uma hierarquia de classes e d
 
 - **Overhead de criação de classes adicionais**: Introduzir o Factory Method pode aumentar o número de classes no código, o que pode resultar em um overhead de criação de classes adicionais. Isso pode tornar o código mais difícil de gerenciar e manter, especialmente em projetos pequenos ou simples.
 
-<br> 
 ---
-<br> 
-
-# Factory Method Pattern
 
 ## Intent
+
 To define an interface for creating an object (hence the name "factory method"), but let subclasses decide which class to instantiate. This allows deferring instantiation to subclasses.
 
 ## Motivation
+
 The Factory Method pattern is used when you have a hierarchy of classes and want to delegate the responsibility of object creation to specific subclasses.
 
 ## Applicability
+
 - A class cannot anticipate the class of objects it must create.
 - A class wants its subclasses to specify the objects they create.
 - Classes delegate responsibility to one of several helper subclasses, and you want to localize the knowledge of which subclass is the delegate.
 
 ## Pros
+
 - **Decoupling**: The Factory Method promotes low coupling between client code and concrete classes, as the client interacts only with the common interface (or abstract class) instead of knowing the specific implementations of factory and product.
 
 - **Abstraction**: It provides an abstraction for object creation, allowing client code to work with an interface or abstract class instead of worrying about the concrete implementations of factory and product. This facilitates substituting concrete objects without altering client code.
@@ -62,7 +66,8 @@ The Factory Method pattern is used when you have a hierarchy of classes and want
 
 - **Standardization**: The Factory Method promotes standardization of object creation, ensuring that all objects are created according to a specific pattern defined by the factory. This helps maintain consistency and cohesion in the code.
 
-## Cons:
+## Cons
+
 - **Additional Complexity**: Introducing the Factory Method pattern can add complexity to the code, especially if there are many classes involved in the factory and product hierarchy. This can make the code harder to understand and maintain.
 
 - **Need for Subclassing**: To use the Factory Method, you typically need to create factory subclasses for each type of product you want to create. This can lead to an explosion of subclasses if there are many different types of products.

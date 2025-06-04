@@ -1,10 +1,12 @@
-# Padrões de Projetos Estruturais
+# Padrões de Projetos Estruturais / Structural Design Patterns
 
 ## Conceito
+
 Os padrões de projeto estruturais são uma parte fundamental do desenvolvimento de software, pois fornecem soluções para problemas recorrentes relacionados à estruturação de classes e objetos. Eles ajudam os desenvolvedores a criar sistemas mais flexíveis, escaláveis e fáceis de manter, ao mesmo tempo em que promovem a reutilização de código e a separação de preocupações.
 Basicamente esses padrões se preocupam com a forma como os objetos são compostos para formar estruturas maiores.
 
 ## Tipos
+
 Alguns dos padrões de projeto estruturais mais comuns incluem:
 
 - **Adapter (Adaptador)**: Este padrão permite que objetos com interfaces incompatíveis trabalhem juntos. Ele é frequentemente usado quando um sistema precisa interagir com um componente externo que possui uma interface diferente daquela esperada pelo sistema.
@@ -23,17 +25,15 @@ Alguns dos padrões de projeto estruturais mais comuns incluem:
 
 > Esses padrões, quando aplicados corretamente, podem melhorar significativamente a estrutura e a flexibilidade do seu código, facilitando a manutenção e a evolução do sistema ao longo do tempo. No entanto, é importante entender as situações em que cada padrão é mais apropriado e como aplicá-los de forma eficaz para obter os melhores resultados.
 
-<br> 
 ---
-<br> 
-
-# Structural Design Patterns
 
 ## Concept
+
 Structural design patterns are a fundamental part of software development, as they provide solutions to recurring problems related to the structuring of classes and objects. They help developers create more flexible, scalable, and maintainable systems while promoting code reuse and separation of concerns.
 Essentially, these patterns concern themselves with how objects are composed to form larger structures.
 
 ## Types
+
 Some of the most common structural design patterns include:
 
 - **Adapter**: This pattern allows objects with incompatible interfaces to work together. It is often used when a system needs to interact with an external component that has an interface different from what the system expects.
