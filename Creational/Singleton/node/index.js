@@ -1,21 +1,67 @@
-var Singleton = /** @class */ (function () {
-    function Singleton() {
-        // We can't enable "new Singleton" calls inside project
+/**
+ * Database Class
+ * This class implements the Singleton pattern for a database driver.
+ * It ensures that only one instance of the database driver exists.
+ *
+ * @class
+ *
+ * @implements {DatabaseDriver}
+ */
+var Database = /** @class */ (function () {
+    function Database() {
     }
-    Object.defineProperty(Singleton, "instance", {
+    Object.defineProperty(Database, "instance", {
         get: function () {
-            if (!Singleton._instance) {
-                // Here we use something similar to recursion. At second call, _instance isn't more null.
-                Singleton._instance = new Singleton();
+            if (!Database._instance) {
+                Database._instance = new Database();
             }
-            return Singleton._instance;
+            if (!(Database._instance instanceof Database)) {
+                throw new Error("Database instance is not of type Database");
+            }
+            Database._instance.connect();
+            return Database._instance;
         },
         enumerable: false,
         configurable: true
     });
-    Singleton._instance = null;
-    return Singleton;
+    Database.prototype.connect = function () {
+        Database._isConnected = true;
+        this._connect();
+    };
+    Database.prototype.disconnect = function () {
+        Database._isConnected = false;
+        this._disconnect();
+    };
+    Database.prototype._connect = function () {
+        console.log("Database connected");
+    };
+    Database.prototype._disconnect = function () {
+        console.log("Database disconnected");
+    };
+    Object.defineProperty(Database.prototype, "isConnected", {
+        get: function () {
+            return Database._isConnected;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Database._instance = null;
+    Database._isConnected = false;
+    return Database;
 }());
-var singleton1 = Singleton.instance;
-var singleton2 = Singleton.instance;
-console.log(singleton1 === singleton2); // Exit: true
+/**
+ * Client - Demonstrates the Singleton usage.
+ */
+var Main = /** @class */ (function () {
+    function Main() {
+    }
+    Main.main = function () {
+        var db = Database.instance;
+        if (!db.isConnected) {
+            throw new Error("Database is not connected");
+        }
+        db.disconnect();
+    };
+    return Main;
+}());
+Main.main();

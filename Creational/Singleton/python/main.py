@@ -1,16 +1,83 @@
-class Singleton:
-    _instance = None
+from abc import ABC, abstractmethod
 
-    # The __new__ method is called before the __init__ method.
-    # While __init__ initializes the object after its creation, __new__ creates the object itself.
-    # The __new__ method is static and therefore we must use cls instead of self as a parameter
+class DatabaseDriver(ABC):
+    """
+    Singleton Interface
+    This interface defines the contract for a database driver.
+    """
+
+    @abstractmethod
+    def connect(self) -> None:
+        """Connects to the database."""
+        pass
+
+    @abstractmethod
+    def disconnect(self) -> None:
+        """Disconnects from the database."""
+        pass
+
+    @property
+    @abstractmethod
+    def is_connected(self) -> bool:
+        """Indicates whether the database connection is active."""
+        pass
+
+
+class Database(DatabaseDriver):
+    """
+    Database Class
+    This class implements the Singleton pattern for a database driver.
+    It ensures that only one instance of the database driver exists.
+    """
+
+    _instance = None
+    _is_connected = False
+
     def __new__(cls):
-        if not cls._instance:
-            # Here we use something similar to recursion. At second call, cls._instance isn't more None.
-            cls._instance = super().__new__(cls)
+        if cls._instance is None:
+            cls._instance = super(Database, cls).__new__(cls)
         return cls._instance
 
-singleton1 = Singleton()
-singleton2 = Singleton()
+    def connect(self) -> None:
+        """Connects to the database."""
+        Database._is_connected = True
+        self._connect()
 
-print(singleton1 in singleton2) # Exit: true
+    def disconnect(self) -> None:
+        """Disconnects from the database."""
+        Database._is_connected = False
+        self._disconnect()
+
+    def _connect(self):
+        print("Database connected")
+
+    def _disconnect(self):
+        print("Database disconnected")
+
+    @property
+    def is_connected(self) -> bool:
+        """Returns True if connected, False otherwise."""
+        return Database._is_connected
+
+
+class Main:
+    """
+    Client - Demonstrates the Singleton usage.
+    """
+
+    @staticmethod
+    def main():
+        """Demonstrates the usage of the Database Singleton.
+
+        Raises:
+            RuntimeError: If the database is not connected.
+        """
+        db: DatabaseDriver = Database()
+        db.connect()
+        if not db.is_connected:
+            raise RuntimeError("Database is not connected")
+        db.disconnect()
+
+
+if __name__ == "__main__":
+    Main.main()
