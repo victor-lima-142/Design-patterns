@@ -1,16 +1,19 @@
-# Padrão Composite
+# Padrão Composite / Composite Pattern
 
 ## Intenção
+
 Compor objetos em estruturas de árvore para representarem hierarquias partes-todo. Composite permite aos clientes tratarem de maneira uniforme objetos individuais e composições de objetos.
 
 ## Motivação
+
 A motivação para o uso do padrão Composite reside na necessidade de representar estruturas hierárquicas de objetos de forma flexível e uniforme.
 
 ## Aplicabilidade
+
 - Quando queremos representar hierarquias partes-todo de objetos.
 - Quando queremos que os clientes sejam capazes de ignorar a diferença entre composições de objetos e objetos individuais. Os clientes tratarão todos os objetos na estrutura composta de maneira uniforme.
 
-## Prós:
+## Prós
 
 - **Composição hierárquica**: Permite representar objetos individuais e composições de objetos de forma hierárquica, o que simplifica a representação de estruturas complexas.
 
@@ -22,7 +25,7 @@ A motivação para o uso do padrão Composite reside na necessidade de represent
 
 - **Reutilização de código**: A estrutura do Composite promove a reutilização de código, já que os mesmos métodos podem ser aplicados a diferentes níveis da hierarquia.
 
-## Contras:
+## Contras
 
 - **Complexidade potencial**: Em estruturas muito complexas, pode haver uma sobrecarga de complexidade devido à recursão e à necessidade de gerenciar muitos objetos diferentes.
 
@@ -36,23 +39,22 @@ A motivação para o uso do padrão Composite reside na necessidade de represent
 
 > Em resumo, o padrão Composite é uma ferramenta poderosa para lidar com estruturas hierárquicas de objetos de forma uniforme, mas pode introduzir complexidade adicional e afetar o desempenho em estruturas muito grandes. Se usado corretamente, pode melhorar a flexibilidade e a reutilização de código em sistemas complexos.
 
-<br> 
 ---
-<br> 
-
-# Composite Pattern
 
 ## Intent
+
 Compose objects into tree structures to represent part-whole hierarchies. Composite allows clients to treat individual objects and compositions of objects uniformly.
 
 ## Motivation
+
 The motivation for using the Composite pattern lies in the need to represent hierarchical structures of objects in a flexible and uniform manner.
 
 ## Applicability
+
 - When we want to represent part-whole hierarchies of objects.
 - When we want clients to be able to ignore the difference between compositions of objects and individual objects. Clients will treat all objects in the composite structure uniformly.
 
-## Pros:
+## Pros
 
 - **Hierarchical composition**: Allows representing individual objects and compositions of objects hierarchically, simplifying the representation of complex structures.
 
@@ -64,7 +66,7 @@ The motivation for using the Composite pattern lies in the need to represent hie
 
 - **Code reuse**: The Composite structure promotes code reuse since the same methods can be applied to different levels of the hierarchy.
 
-## Cons:
+## Cons
 
 - **Potential complexity**: In very complex structures, there may be an overhead of complexity due to recursion and the need to manage many different objects.
 
