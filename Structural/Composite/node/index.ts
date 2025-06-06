@@ -1,24 +1,30 @@
-// This is the main class/interface (this case is interface) in composite pattern. The father class
+/**
+ * Product Interface
+ * Represents the base component in the Composite Pattern.
+ * 
+ * @interface
+ * @property {number} getPrice - Method to get the price of the product.
+ * @property {string} getName - Method to get the name of the product.
+ */
 interface Product {
     getPrice(): number;
     getName(): string;
-    addProduct(product: Product): void;
 }
 
-// This class is an individual product
+/**
+ * Represents a single product item.
+ * 
+ * @implements {Product}
+ */
 class IndividualProduct implements Product {
-    public price: number;
-    public name: string;
-
-    constructor(name: string, price: number) {
-        this.name = name;
-        this.price = price;
-    }
-
-    addProduct(product: Product): void { }
+    constructor(
+        private readonly name: string,
+        private readonly price: number
+    ) { }
 
     getPrice(): number {
-        return this.price;
+        const fixed = this.price.toFixed(2);
+        return Number(fixed);
     }
 
     getName(): string {
@@ -26,38 +32,70 @@ class IndividualProduct implements Product {
     }
 }
 
-// This class starts to use the composite fundamentals, it's a product too
-class ComboProduct implements Product {
-    public comboName: string;
-    private productList: Product[] = [];
+/**
+ * Composite Class - Represents a collection of products or other carts.
+ * 
+ * @implements {Product}
+ */
+class ShoppingCart implements Product {
+    private readonly products: Product[] = [];
 
-    constructor(comboName: string) {
-        this.comboName = comboName;
-    }
+    constructor(private readonly cartName: string) { }
 
     getPrice(): number {
-        let total: number = 0;
-        this.productList.forEach((product) => total += product.getPrice());
-        return total;
+        const fixed = this.products.reduce((sum, product) => sum + product.getPrice(), 0).toFixed(2);
+        return Number(fixed);
     }
 
     getName(): string {
-        return this.comboName;
+        return this.cartName;
     }
 
     addProduct(product: Product): void {
-        this.productList.push(product);
+        this.products.push(product);
+    }
+
+    removeProduct(product: Product): void {
+        const index = this.products.indexOf(product);
+        if (index !== -1) {
+            this.products.splice(index, 1);
+        }
+    }
+
+    listProducts(): void {
+        console.log(`\nCart: ${this.getName()} - Total: $${this.getPrice().toFixed(2)}`);
+        this.products.forEach((p, i) =>
+            console.log(`  ${i + 1}. ${p.getName()} - $${p.getPrice().toFixed(2)}`)
+        );
     }
 }
 
-// Testing
-const designPatterns = new IndividualProduct("Design Patterns", 20.0);
-const cleanCode = new IndividualProduct("Clean Code", 22.0);
-const refactoring = new IndividualProduct("Refactoring", 18.0);
+/**
+ * Client - Demonstrates the Composite usage.
+ */
+class Main {
+    public static main(): void {
+        const book1 = new IndividualProduct("Design Patterns", 20.0);
+        const book2 = new IndividualProduct("Clean Code", 22.0);
+        const book3 = new IndividualProduct("Refactoring", 18.0);
 
-const ITBooksCombo = new ComboProduct("Combo of IT books");
-ITBooksCombo.addProduct(designPatterns);
-ITBooksCombo.addProduct(cleanCode);
-ITBooksCombo.addProduct(refactoring);
+        const techBooks = new ShoppingCart("Tech Book Combo");
+        techBooks.addProduct(book1);
+        techBooks.addProduct(book2);
+        techBooks.addProduct(book3);
 
-console.log(ITBooksCombo.getPrice());
+        const promoBook = new IndividualProduct("You Don't Know JS", 15.0);
+
+        const megaCart = new ShoppingCart("Full Book Package");
+        megaCart.addProduct(techBooks);
+        megaCart.addProduct(promoBook);
+
+        megaCart.listProducts();
+        techBooks.listProducts();
+
+        console.log(`\nTotal for ${megaCart.getName()}: $${megaCart.getPrice()}`);
+        console.log(`\nTotal for ${techBooks.getName()}: $${techBooks.getPrice()}`);
+    }
+}
+
+Main.main();

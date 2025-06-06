@@ -1,69 +1,96 @@
 from typing import List
-from abc import ABC, abstractmethod, ABCMeta
+from abc import ABC, abstractmethod
 
-# This is the main class/interface (this case is interface) in composite pattern. The father class
 class Product(ABC):
-    __metaClass__ = ABCMeta
+    """
+    Represents the base component in the Composite Pattern.
+    """
+    @abstractmethod
+    def get_price(self) -> float:
+        """
+        Get the price of the product.
+
+        :return: float price of the product
+        """
+        pass
 
     @abstractmethod
-    def get_price():
+    def get_name(self) -> str:
+        """
+        Get the name of the product.
+
+        :return: str name of the product
+        """
         pass
 
-    @abstractmethod
-    def get_name():
-        pass
-    
-    @abstractmethod
-    def add_product():
-        pass
-    
-# This class is an individual product
+
 class IndividualProduct(Product):
-    name: str
-    price: float
-
-    def __init__(self, name, price):
+    """
+    Represents a single product item.
+    Implements the Product interface.
+    """
+    def __init__(self, name: str, price: float):
         self.name = name
         self.price = price
-    
+
     def get_price(self) -> float:
         return self.price
-    
-    def get_name(self) -> float:
-        return self.name
-    
-    def add_product(self, product: Product):
-        pass
-
-# This class starts to use the composite fundamentals, it's a product too
-class ComboProduct(Product):
-    combo_name: str
-    product_list: List[Product] = []
-
-    def __init__(self, combo_name: str):
-        self.combo_name = combo_name
-    
-    def get_price(self) -> float:
-        total: float = 0.0
-        for product in self.product_list:
-            total += product.get_price()
-        return total
 
     def get_name(self) -> str:
-        return self.combo_name
-    
+        return self.name  # Corrigido o tipo de retorno
+
+
+class ShoppingCart(Product):
+    """
+    Represents a collection of products or other carts.
+    Implements the Product interface.
+    """
+    def __init__(self, cart: str):
+        self.cart = cart
+        self.product_list: List[Product] = []
+
+    def get_price(self) -> float:
+        return sum(product.get_price() for product in self.product_list)
+
+    def get_name(self) -> str:
+        return self.cart
+
     def add_product(self, product: Product):
         self.product_list.append(product)
-        
 
-# Testing
-design_patterns = IndividualProduct("Design Patterns", 20.00);
-clean_code = IndividualProduct("Clean Code", 22.00);
-refactoring = IndividualProduct("Refactoring", 18.00);
+    def list_product(self) -> None:
+        for product in self.product_list:
+            print(f"Product: {product.get_name()}, Price: {product.get_price()}")
 
-it_books_combo = ComboProduct("Combo of IT books");
-it_books_combo.add_product(design_patterns);
-it_books_combo.add_product(clean_code);
-it_books_combo.add_product(refactoring);
 
-print(it_books_combo.get_price());
+class Main:
+    """
+    Client Class
+    Demonstrates the Composite usage.
+    """
+    @staticmethod
+    def main():
+        book1 = IndividualProduct("Design Patterns", 20.00)
+        book2 = IndividualProduct("Clean Code", 22.00)
+        book3 = IndividualProduct("Refactoring", 18.00)
+
+        tech_books = ShoppingCart("IT Books")
+        tech_books.add_product(book1)
+        tech_books.add_product(book2)
+        tech_books.add_product(book3)
+
+        promo_book = IndividualProduct("You Don't Know JS", 15.00)
+
+        mega_cart = ShoppingCart("Mega Cart")
+        mega_cart.add_product(tech_books)
+        mega_cart.add_product(promo_book)
+
+        tech_books.list_product()
+        print(f"Total Price: {tech_books.get_price()}")
+
+        mega_cart.list_product()
+        print(f"Total Price of Mega Cart: {mega_cart.get_price()}")
+
+
+if __name__ == "__main__":
+    Main.main()
