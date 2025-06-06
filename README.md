@@ -93,7 +93,7 @@ Design Patterns can be categorized into three main groups:
 - Abstract Factory
 - [Singleton](https://github.com/victor-lima-142/Design-patterns/tree/main/Creational/Singleton)
 - Builder
-- prototype
+- Prototype
 
 ### Structural Standards
 
@@ -114,6 +114,6 @@ Design Patterns can be categorized into three main groups:
 - Memento
 - Observer
 - Status
-- Strategy
-- Template Method
+- [Strategy](https://github.com/victor-lima-142/Design-patterns/tree/main/Behavioral/Strategy)
+- [Template Method](https://github.com/victor-lima-142/Design-patterns/tree/main/Behavioral/Template%20Method)
 - Visitor
