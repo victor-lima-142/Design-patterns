@@ -1,46 +1,80 @@
 <?php
 
-# Defining Templates Classes
-interface Product {
-    public function getProductName();
+/**
+ * Interface for notification types.
+ */
+interface Notification {
+    /**
+     * Sends a notification to the user.
+     *
+     * @return void
+     */
+    public function notifyUser(): void;
 }
 
-class Keyboard implements Product {
-    public function getProductName() {
-        return "Keyboard";
+/**
+ * Class for sending email notifications.
+ */
+class EmailNotification implements Notification {
+    /**
+     * Sends an email notification.
+     *
+     * @return void
+     */
+    public function notifyUser(): void {
+        echo "Sending an Email Notification\n";
     }
 }
 
-class Mousepad implements Product {
-    public function getProductName() {
-        return "Mousepad";
+/**
+ * Class for sending SMS notifications.
+ */
+class SMSNotification implements Notification {
+    /**
+     * Sends an SMS notification.
+     *
+     * @return void
+     */
+    public function notifyUser(): void {
+        echo "Sending an SMS Notification\n";
     }
 }
 
-# Defining Creators (Factories)
-abstract class ProductFactory {
-    abstract public function factoryMethod(): Product;
-}
-
-class KeyboardFactory extends ProductFactory {
-    public function factoryMethod(): Product {
-        return new Keyboard();
+/**
+ * Factory class to create Notification instances.
+ */
+class NotificationFactory {
+    /**
+     * Creates a notification based on the given type.
+     *
+     * @param string $type The type of notification (email or sms).
+     * @return Notification
+     * @throws Exception If the type is unknown.
+     */
+    public static function createNotification(string $type): Notification {
+        switch (strtolower($type)) {
+            case "email":
+                return new EmailNotification();
+            case "sms":
+                return new SMSNotification();
+            default:
+                throw new Exception("Unknown notification type");
+        }
     }
 }
 
-class MousepadFactory extends ProductFactory {
-    public function factoryMethod(): Product {
-        return new Mousepad();
+class Main {
+    public static function main() {
+        // Create an email notification
+        $emailNotification = NotificationFactory::createNotification("email");
+        $emailNotification->notifyUser();
+
+        // Create an SMS notification
+        $smsNotification = NotificationFactory::createNotification("sms");
+        $smsNotification->notifyUser();
     }
 }
 
-# Testing
-$keyboardFactory = new KeyboardFactory();
-$keyboard = $keyboardFactory->factoryMethod();
-$mousepadFactory = new MousepadFactory();
-$mousepad = $mousepadFactory->factoryMethod();
-
-echo $keyboard->getProductName()."\n";
-echo $mousepad->getProductName();
+Main:::main();
 
 ?>

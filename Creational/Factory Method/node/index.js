@@ -1,37 +1,77 @@
-var Keyboard = /** @class */ (function () {
-    function Keyboard() {
+/**
+ * Notification class for email messages.
+ *
+ * @implements {INotification}
+ */
+var EmailNotification = /** @class */ (function () {
+    function EmailNotification() {
     }
-    Keyboard.prototype.getProductName = function () {
-        return 'Keyboard';
+    /**
+     * Sends an email notification.
+     */
+    EmailNotification.prototype.notifyUser = function () {
+        console.log("Sending an Email Notification");
     };
-    return Keyboard;
+    return EmailNotification;
 }());
-var Mousepad = /** @class */ (function () {
-    function Mousepad() {
+/**
+ * Notification class for SMS messages.
+ *
+ * @implements {INotification}
+ */
+var SMSNotification = /** @class */ (function () {
+    function SMSNotification() {
     }
-    Mousepad.prototype.getProductName = function () {
-        return 'Mousepad';
+    /**
+     * Sends an SMS notification.
+     */
+    SMSNotification.prototype.notifyUser = function () {
+        console.log("Sending an SMS Notification");
     };
-    return Mousepad;
+    return SMSNotification;
 }());
-var KeyboardFactory = /** @class */ (function () {
-    function KeyboardFactory() {
+/**
+ * Factory for creating Notification objects.
+ */
+var NotificationFactory = /** @class */ (function () {
+    function NotificationFactory() {
     }
-    KeyboardFactory.prototype.factoryMethod = function () {
-        return new Keyboard();
+    /**
+     * Creates a Notification instance based on the given type.
+     *
+     * @param type - The type of notification ("email", "sms").
+     * @returns A Notification instance.
+     * @throws Error if the type is unknown.
+     */
+    NotificationFactory.createNotification = function (type) {
+        switch (type) {
+            case "email":
+                return new EmailNotification();
+            case "sms":
+                return new SMSNotification();
+            default:
+                throw new Error("Unknown notification type");
+        }
     };
-    return KeyboardFactory;
+    return NotificationFactory;
 }());
-var MousepadFactory = /** @class */ (function () {
-    function MousepadFactory() {
+/*
+* Client - demonstrate the Factory Method pattern.
+*/
+var Main = /** @class */ (function () {
+    function Main() {
     }
-    MousepadFactory.prototype.factoryMethod = function () {
-        return new Mousepad();
+    /**
+     * Main method to demonstrate the Factory Method pattern.
+     */
+    Main.main = function () {
+        // Create an email notification
+        var emailNotification = NotificationFactory.createNotification("email");
+        emailNotification.notifyUser();
+        // Create an SMS notification
+        var smsNotification = NotificationFactory.createNotification("sms");
+        smsNotification.notifyUser();
     };
-    return MousepadFactory;
+    return Main;
 }());
-// Testing
-var keyboard = new KeyboardFactory().factoryMethod();
-var mousepad = new MousepadFactory().factoryMethod();
-console.log(keyboard.getProductName());
-console.log(mousepad.getProductName());
+Main.main();

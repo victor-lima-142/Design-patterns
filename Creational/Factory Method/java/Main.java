@@ -1,51 +1,80 @@
-// Defining Templates Classes
-interface Product {
-    String getProductName();
+/**
+ * Interface representing a generic notification.
+ */
+interface Notification {
+    /**
+     * Sends the notification to the user.
+     */
+    void notifyUser();
 }
 
-class Keyboard implements Product {
-    @Override
-    public String getProductName() {
-        return "Keyboard";
+/**
+ * Sends notifications via Email.
+ * 
+ * @see Notification
+ */
+class EmailNotification implements Notification {
+    /**
+     * Sends an Email notification.
+     */
+    public void notifyUser() {
+        System.out.println("Sending an Email Notification");
     }
 }
 
-class Mousepad implements Product {
-    @Override
-    public String getProductName() {
-        return "Mousepad";
+/**
+ * Sends notifications via SMS.
+ *
+ * @see Notification
+ */
+class SMSNotification implements Notification {
+    /**
+     * Sends an SMS notification.
+     */
+    public void notifyUser() {
+        System.out.println("Sending an SMS Notification");
     }
 }
 
-// Defining Creators (Factories)
-interface ProductFactory {
-    Product factoryMethod();
-}
-
-class KeyboardFactory implements ProductFactory {
-    @Override
-    public Product factoryMethod() {
-        return new Keyboard();
+/**
+ * Factory class to create Notification instances.
+ * This class uses the Factory Method pattern to encapsulate the instantiation logic.
+ * It allows for the creation of different types of notifications without exposing the instantiation logic to the client code.
+ */
+class NotificationFactory {
+    /**
+     * Creates a Notification instance based on the given type.
+     *
+     * @param type The type of notification (e.g., "email", "sms").
+     * @return A Notification instance.
+     * @throws IllegalArgumentException if the type is unknown.
+     */
+    public static Notification createNotification(String type) {
+        if (type.equalsIgnoreCase("email")) {
+            return new EmailNotification();
+        } else if (type.equalsIgnoreCase("sms")) {
+            return new SMSNotification();
+        }
+        throw new IllegalArgumentException("Unknown type");
     }
 }
 
-class MousepadFactory implements ProductFactory {
-    @Override
-    public Product factoryMethod() {
-        return new Mousepad();
-    }
-}
-
-// Testing
-public class Main {
+/**
+ * Client - demonstrate the Factory Method pattern.
+ */
+class Main {
+    /**
+     * Main method to demonstrate the Factory Method pattern.
+     *
+     * @param args Command line arguments (not used).
+     */
     public static void main(String[] args) {
-        ProductFactory keyboardFactory = new KeyboardFactory();
-        Product keyboard = keyboardFactory.factoryMethod();
+        // Create an Email notification
+        Notification emailNotification = NotificationFactory.createNotification("email");
+        emailNotification.notifyUser();
 
-        ProductFactory mousepadFactory = new MousepadFactory();
-        Product mousepad = mousepadFactory.factoryMethod();
-
-        System.out.println(keyboard.getProductName());
-        System.out.println(mousepad.getProductName());
-    } 
+        // Create an SMS notification
+        Notification smsNotification = NotificationFactory.createNotification("sms");
+        smsNotification.notifyUser();
+    }
 }
