@@ -70,19 +70,25 @@ class DeepUser extends User {
     }
 }
 
-$shallowUser = new User('John Doe', 30);
-$shallowUserClone = $shallowUser->clone();
-$shallowUserClone->name = 'Jane Doe';
+class Main {
+    public static function main() {
+        $shallowUser = new User('John Doe', 30);
+        $shallowUserClone = $shallowUser->clone();
+        $shallowUserClone->name = 'Jane Doe';
 
-$address1 = new Address('123 Main St', 'Anytown');
-$deepUser = new DeepUser('John Doe', 30, [$address1]);
-$deepUserClone = $deepUser->clone();
-$deepUserClone->addresses[0]->street = '456 Elm St';
+        $address1 = new Address('123 Main St', 'Anytown');
+        $deepUser = new DeepUser('John Doe', 30, [$address1]);
+        $deepUserClone = $deepUser->clone();
+        $deepUserClone->addresses[0]->street = '456 Elm St';
 
-echo $shallowUser->getData();
-echo $shallowUserClone->getData();
+        echo $shallowUser->getData() . "\n";
+        echo $shallowUserClone->getData() . "\n";
+        echo "\n------------------------\n\n";
+        echo $deepUser->getData() . "\n";
+        echo $deepUserClone->getData() . "\n";
+    }
+}
 
-echo $deepUser->getData();
-echo $deepUserClone->getData();
+Main::main();
 
 ?>
