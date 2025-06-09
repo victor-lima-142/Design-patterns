@@ -64,22 +64,21 @@ class PrepareTea extends PrepareDrink {
 }
 
 
-// Testing
-echo "----------------------------------------------\n";
-echo "Preparing Coffee\n";
-echo "----------------------------------------------\n";
+class Main {
+    public static function main() {
+        // Creating an instance of the concrete class
+        $prepareCoffee = new PrepareCoffee();
+        // Calling the template method
+        $prepareCoffee->prepareMyDrink();
 
-// Creating an instance of the concrete class
-$prepareCoffee = new PrepareCoffee();
-// Calling the template method
-$prepareCoffee->prepareMyDrink();
+        echo "\n----------------------------------------------\n\n";
 
-echo "\n----------------------------------------------\n";
-echo "Preparing Tea\n";
-echo "----------------------------------------------\n";
+        // Creating an instance of the concrete class
+        $prepareTea = new PrepareTea();
+        // Calling the template method
+        $prepareTea->prepareMyDrink();
+    }
+}
 
-// Creating an instance of the concrete class
-$prepareTea = new PrepareTea();
-// Calling the template method
-$prepareTea->prepareMyDrink();
+Main::main();
 ?>

@@ -72,17 +72,20 @@ var PrepareTea = /** @class */ (function (_super) {
     };
     return PrepareTea;
 }(PrepareDrink));
-console.log("----------------------------------------------");
-console.log("Preparing Coffee");
-console.log("----------------------------------------------");
-// Creating an instance of the concrete class
-var prepareCoffee = new PrepareCoffee();
-// Calling the template method
-prepareCoffee.prepareMyDrink();
-console.log("\n----------------------------------------------");
-console.log("Preparing Tea");
-console.log("----------------------------------------------");
-// Creating an instance of the concrete class
-var prepareTea = new PrepareTea();
-// Calling the template method
-prepareTea.prepareMyDrink();
+var Main = /** @class */ (function () {
+    function Main() {
+    }
+    Main.main = function () {
+        // Creating an instance of the concrete class
+        var prepareCoffee = new PrepareCoffee();
+        // Calling the template method
+        prepareCoffee.prepareMyDrink();
+        console.log("\n----------------------------------------------\n");
+        // Creating an instance of the concrete class
+        var prepareTea = new PrepareTea();
+        // Calling the template method
+        prepareTea.prepareMyDrink();
+    };
+    return Main;
+}());
+Main.main();

@@ -65,18 +65,12 @@ class PrepareTea extends PrepareDrink {
 // Testing
 public class Main {
     public static void main(String[] args) {
-        System.out.println("----------------------------------------------");
-        System.out.println("Preparing Coffee");
-        System.out.println("----------------------------------------------");
-
         // Creating an instance of the concrete class
         PrepareDrink prepareCoffee = new PrepareCoffee();
         // Calling the template method
         prepareCoffee.prepareMyDrink();
 
-        System.out.println("\n----------------------------------------------");
-        System.out.println("Preparing Tea");
-        System.out.println("----------------------------------------------");
+        System.out.println("\n----------------------------------------------\n");
         
         // Creating an instance of the concrete class
         PrepareDrink prepareTea = new PrepareTea();

@@ -64,15 +64,14 @@ class PrepareTea(PrepareDrink):
     def step5(self):
         print("Mix, and the tea is ready")
 
+class Main:
+    @staticmethod
+    def main():
+        prepareCoffee = PrepareCoffee()
+        prepareCoffee.prepareMyDrink()
+        print("\n----------------------------------------------\n")
+        prepareTea = PrepareTea()
+        prepareTea.prepareMyDrink()
 
 if __name__ == "__main__":
-    print("----------------------------------------------")
-    print("Preparing Coffee")
-    print("----------------------------------------------")
-    prepareCoffee = PrepareCoffee()
-    prepareCoffee.prepareMyDrink()
-    print("\n----------------------------------------------")
-    print("Preparing Tea")
-    print("----------------------------------------------")
-    prepareTea = PrepareTea()
-    prepareTea.prepareMyDrink()    
+    Main.main()
