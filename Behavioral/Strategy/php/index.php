@@ -42,36 +42,41 @@ class ShoppingCart {
 // Concrete strategies
 class CreditCardPaymentStrategy implements PaymentStrategy {
     public function pay($amount): void {
-        echo "Paying $$amount using credit card.";
+        echo "\nPaying $$amount using credit card.";
     }
 }
 
 class PaypalPaymentStrategy implements PaymentStrategy {
     public function pay($amount): void {
-        echo "Paying $$amount using Paypal.";
+        echo "\nPaying $$amount using Paypal.";
     }
 }
 
 class CashPaymentStrategy implements PaymentStrategy {
     public function pay($amount): void {
-        echo "Paying $$amount using cash.";
+        echo "\nPaying $$amount using cash.";
     }
 }
 
-// Example usage
-$cardPaymentStrategy = new CreditCardPaymentStrategy();
-$paypalPaymentStrategy = new PaypalPaymentStrategy();
-$cashPaymentStrategy = new CashPaymentStrategy();
+class Main {
+    public static function main(): void {
+        $cardPaymentStrategy = new CreditCardPaymentStrategy();
+        $paypalPaymentStrategy = new PaypalPaymentStrategy();
+        $cashPaymentStrategy = new CashPaymentStrategy();
 
-$cart = new ShoppingCart(paymentStrategy: $cardPaymentStrategy);
-$cart->add(value: 100.0);
-$cart->processOrder();
+        $cart = new ShoppingCart(paymentStrategy: $cardPaymentStrategy);
+        $cart->add(value: 100.0);
+        $cart->processOrder();
 
-$cart->remove(value: 50.0);
-$cart->setPaymentStrategy(paymentStrategy: $cashPaymentStrategy);
-$cart->processOrder();
+        $cart->remove(value: 50.0);
+        $cart->setPaymentStrategy(paymentStrategy: $cashPaymentStrategy);
+        $cart->processOrder();
 
-$cart->reset();
-$cart->setPaymentStrategy(paymentStrategy: $paypalPaymentStrategy);
-$cart->add(value: 200.0);
-$cart->processOrder();
+        $cart->reset();
+        $cart->setPaymentStrategy(paymentStrategy: $paypalPaymentStrategy);
+        $cart->add(value: 200.0);
+        $cart->processOrder();
+    }
+}
+
+Main::main();

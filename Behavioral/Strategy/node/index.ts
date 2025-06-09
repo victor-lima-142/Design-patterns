@@ -53,20 +53,25 @@ class CashPaymentStrategy implements PaymentStrategy {
     }
 }
 
-// Example usage
-const cardMethod: PaymentStrategy = new CardPaymentStrategy();
-const paypalMethod: PaymentStrategy = new PaypalPaymentStrategy();
-const cashMethod: PaymentStrategy = new CashPaymentStrategy();
+class Main {
+    static main() {
+        const cardMethod: PaymentStrategy = new CardPaymentStrategy();
+        const paypalMethod: PaymentStrategy = new PaypalPaymentStrategy();
+        const cashMethod: PaymentStrategy = new CashPaymentStrategy();
 
-const cart = new ShoppingCart(cardMethod);
-cart.add(100);
-cart.processPayment();
+        const cart = new ShoppingCart(cardMethod);
+        cart.add(100);
+        cart.processPayment();
 
-cart.remove(50);
-cart.setPaymentStrategy(paypalMethod);
-cart.processPayment();
+        cart.remove(50);
+        cart.setPaymentStrategy(paypalMethod);
+        cart.processPayment();
 
-cart.reset();
-cart.add(190);
-cart.setPaymentStrategy(cashMethod);
-cart.processPayment();
+        cart.reset();
+        cart.add(190);
+        cart.setPaymentStrategy(cashMethod);
+        cart.processPayment();
+    }
+}
+
+Main.main();

@@ -56,17 +56,24 @@ var CashPaymentStrategy = /** @class */ (function () {
     };
     return CashPaymentStrategy;
 }());
-// Example usage
-var cardMethod = new CardPaymentStrategy();
-var paypalMethod = new PaypalPaymentStrategy();
-var cashMethod = new CashPaymentStrategy();
-var cart = new ShoppingCart(cardMethod);
-cart.add(100);
-cart.processPayment();
-cart.remove(50);
-cart.setPaymentStrategy(paypalMethod);
-cart.processPayment();
-cart.reset();
-cart.add(190);
-cart.setPaymentStrategy(cashMethod);
-cart.processPayment();
+var Main = /** @class */ (function () {
+    function Main() {
+    }
+    Main.main = function () {
+        var cardMethod = new CardPaymentStrategy();
+        var paypalMethod = new PaypalPaymentStrategy();
+        var cashMethod = new CashPaymentStrategy();
+        var cart = new ShoppingCart(cardMethod);
+        cart.add(100);
+        cart.processPayment();
+        cart.remove(50);
+        cart.setPaymentStrategy(paypalMethod);
+        cart.processPayment();
+        cart.reset();
+        cart.add(190);
+        cart.setPaymentStrategy(cashMethod);
+        cart.processPayment();
+    };
+    return Main;
+}());
+Main.main();

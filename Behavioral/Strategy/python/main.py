@@ -48,20 +48,24 @@ class BitcoinPaymentStrategy(PaymentStrategy):
         print(f"Paid {amount} using Bitcoin")
 
 
-# Example usage
-card_method = CreditCardPaymentStrategy()
-paypal_method = PayPalPaymentStrategy()
-bitcoin_method = BitcoinPaymentStrategy()
+class Main:
+    @staticmethod
+    def main():
+        card_method = CreditCardPaymentStrategy()
+        paypal_method = PayPalPaymentStrategy()
+        bitcoin_method = BitcoinPaymentStrategy()
 
-cart = ShoppingCart(card_method)
-cart.add(100.0)
-cart.process_payment()
+        cart = ShoppingCart(card_method)
+        cart.add(100.0)
+        cart.process_payment()
 
-cart.remove(50.0)
-cart.set_payment_method(paypal_method)
-cart.process_payment()
+        cart.remove(50.0)
+        cart.set_payment_method(paypal_method)
+        cart.process_payment()
 
-cart.reset()
-cart.add(200.0)
-cart.set_payment_method(bitcoin_method)
-cart.process_payment()
+        cart.reset()
+        cart.add(200.0)
+        cart.set_payment_method(bitcoin_method)
+        cart.process_payment()
+
+Main.main()
