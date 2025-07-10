@@ -1,84 +1,69 @@
 <?php
 
-// Defining Abstract Class
-abstract class PrepareDrink {
-    // Defining Template method
-    public function prepareMyDrink() {
-        $this->step1();
-        $this->step2();
-        $this->step3();
-        $this->step4();
-        $this->step5();
+/**
+ * Abstract class that defines the template for exporting data.
+ */
+abstract class DataExporter {
+    /**
+     * Template method defining the skeleton of the algorithm.
+     *
+     * @return void
+     */
+    public function export(): void {
+        $this->openFile();
+        $this->writeHeader();
+        $this->writeData();
+        $this->closeFile();
     }
 
-    abstract protected function step1();
-    abstract protected function step2();
-    abstract protected function step3();
-    abstract protected function step4();
-    abstract protected function step5();
+    /**
+     * Opens the file.
+     *
+     * @return void
+     */
+    abstract protected function openFile(): void;
+
+    /**
+     * Writes the header.
+     *
+     * @return void
+     */
+    abstract protected function writeHeader(): void;
+
+    /**
+     * Writes the data.
+     *
+     * @return void
+     */
+    abstract protected function writeData(): void;
+
+    /**
+     * Closes the file.
+     *
+     * @return void
+     */
+    abstract protected function closeFile(): void;
 }
 
-// Defining Concrete Classes
-class PrepareCoffee extends PrepareDrink {
-    protected function step1() {
-        echo "Boiling water\n";
+/**
+ * Concrete implementation for CSV export.
+ */
+class CSVExporter extends DataExporter {
+    protected function openFile(): void {
+        echo "Opening CSV file...\n";
     }
 
-    protected function step2() {
-        echo "Pour boiling water through coffee powder\n";
+    protected function writeHeader(): void {
+        echo "Writing CSV header...\n";
     }
 
-    protected function step3() {
-        echo "Pour the coffee into a cup\n";
+    protected function writeData(): void {
+        echo "Writing CSV data...\n";
     }
 
-    protected function step4() {
-        echo "Add sugar or milk to the cup\n";
-    }
-
-    protected function step5() {
-        echo "Mix, and the coffee is ready\n";
-    }
-}
-
-class PrepareTea extends PrepareDrink {
-    protected function step1() {
-        echo "Boiling water\n";
-    }
-
-    protected function step2() {
-        echo "Place the tea bag\n";
-    }
-
-    protected function step3() {
-        echo "Pour the tea into a cup\n";
-    }
-
-    protected function step4() {
-        echo "Add lemon to tea\n";
-    }
-
-    protected function step5() {
-        echo "Mix, and the tea is ready\n";
-    }
-}
-
-
-class Main {
-    public static function main() {
-        // Creating an instance of the concrete class
-        $prepareCoffee = new PrepareCoffee();
-        // Calling the template method
-        $prepareCoffee->prepareMyDrink();
-
-        echo "\n----------------------------------------------\n\n";
-
-        // Creating an instance of the concrete class
-        $prepareTea = new PrepareTea();
-        // Calling the template method
-        $prepareTea->prepareMyDrink();
+    protected function closeFile(): void {
+        echo "Closing CSV file.\n";
     }
 }
 
-Main::main();
 ?>

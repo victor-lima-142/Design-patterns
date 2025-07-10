@@ -1,77 +1,50 @@
 from abc import ABC, abstractmethod
 
-# Defining Abstract Class
-class PrepareDrink(ABC):
+class DataExporter(ABC):
+    """Abstract base class defining the template method for exporting data."""
+
+    def export(self):
+        """Template method that defines the algorithm skeleton."""
+        self.open_file()
+        self.write_header()
+        self.write_data()
+        self.close_file()
+
     @abstractmethod
-    def step1(self):
+    def open_file(self):
+        """Opens the file."""
         pass
 
     @abstractmethod
-    def step2(self):
+    def write_header(self):
+        """Writes the header to the file."""
         pass
 
     @abstractmethod
-    def step3(self):
+    def write_data(self):
+        """Writes the data to the file."""
         pass
 
     @abstractmethod
-    def step4(self):
+    def close_file(self):
+        """Closes the file."""
         pass
 
-    @abstractmethod
-    def step5(self):
-        pass
+class CSVExporter(DataExporter):
+    """Concrete implementation of DataExporter for CSV files."""
 
-    # Defining Template method
-    def prepareMyDrink(self):
-        self.step1()
-        self.step2()
-        self.step3()
-        self.step4()
-        self.step5()
+    def open_file(self):
+        """Open CSV file."""
+        print("Opening CSV file...")
 
+    def write_header(self):
+        """Write CSV header."""
+        print("Writing CSV header...")
 
-# Defining Concrete Classes
-class PrepareCoffee(PrepareDrink):
-    def step1(self):
-        print("Boiling water")
-    
-    def step2(self):
-        print("Pour boiling water through coffee powder")
-    
-    def step3(self):
-        print("Pour the coffee into a cup")
-    
-    def step4(self):
-        print("Add sugar or milk to the cup")
-    
-    def step5(self):
-        print("Mix, and the coffee is ready")
+    def write_data(self):
+        """Write CSV data."""
+        print("Writing CSV data...")
 
-class PrepareTea(PrepareDrink):
-    def step1(self):
-        print("Boiling water")
-    
-    def step2(self):
-        print("Place the tea bag")
-    
-    def step3(self):
-        print("Pour the tea into a cup")
-    
-    def step4(self):
-        print("Add lemon to tea")
-    
-    def step5(self):
-        print("Mix, and the tea is ready")
-
-class Main:
-    @staticmethod
-    def main():
-        prepareCoffee = PrepareCoffee()
-        prepareCoffee.prepareMyDrink()
-        print("\n----------------------------------------------\n")
-        prepareTea = PrepareTea()
-        prepareTea.prepareMyDrink()
-
-if __name__ == "__main__":
-    Main.main()
+    def close_file(self):
+        """Close CSV file."""
+        print("Closing CSV file.")
